@@ -11,21 +11,21 @@ import org.apache.maven.project.MavenProject;
 
 import java.util.List;
 
-/*bağımlılık sayacı hedefin adıdır. Öte yandan, onu derleme aşamasına varsayılan olarak ekledik, bu yüzden b
-u hedefi kullanırken mutlaka bir aşama belirtmemiz gerekmeyecek.*/
+/*"goal" adi: dependency-counter
+  bu hedefi derleme asamasina varsayilan olarak ekledik,
+  bu yuzden bu hedefi kullanirken bir asama belirtmemiz gerekmeyecek.*/
 @Mojo(name = "dependency-counter", defaultPhase = LifecyclePhase.COMPILE)
 public class DependencyCounterMojo extends AbstractMojo {
 
-    //Proje bilgilerine erişebilmek için parametre olarak bir MavenProject eklememiz gerek
+    //Proje bilgilerine erisebilmek icin parametre olarak bir MavenProject eklememiz gerek
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
     MavenProject project;
 
-    //kullanıcıların saymak istediğimiz
-    // bağımlılıkların kapsamını belirleyebilecekleri bir parametre
+    //kullanicilarin saymak istedigimiz bagımliliklarin kapsamini belirleyebilecekleri bir parametre
     @Parameter(property = "scope")
     String scope;
 
-    //sayarken bağımlılıkları filtreleyeceğiz:
+    //sayarken bagimliliklari filtreleyecegiz:
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         List<Dependency> dependencies = project.getDependencies();

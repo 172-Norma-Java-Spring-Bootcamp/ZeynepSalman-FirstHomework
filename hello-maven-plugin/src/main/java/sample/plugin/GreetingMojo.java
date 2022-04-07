@@ -7,7 +7,8 @@ import org.apache.maven.plugins.annotations.Mojo;
 
 @Mojo(name = "sayhi")
 public class GreetingMojo extends AbstractMojo {
-    //. Mojo, eklentimizin yürüteceği bir hedefi temsil eden bir Java sınıfıdır . Bir eklenti bir veya daha fazla mojo içerir.
+    //Mojo, plugin'inin yurutecegi bir hedefi temsil eden bir Java sinifidir.
+    //Bir plugin bir veya daha fazla mojo icerir.
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         getLog().info("hello world");
